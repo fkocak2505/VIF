@@ -1,0 +1,71 @@
+//plugins {
+//    id 'com.android.library'
+//    id 'kotlin-android'
+//    id 'maven-publish'
+//}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+ext {
+    PUBLISH_GROUP_ID = 'io.github.fkocak2505'
+    PUBLISH_VERSION = '1.0.0'
+    PUBLISH_ARTIFACT_ID = 'vif'
+    PUBLISH_DESCRIPTION = 'Validation Input Filter'
+    PUBLISH_URL = 'https://github.com/fkocak2505/VIF'
+    PUBLISH_LICENSE_NAME = 'Apache License'
+    PUBLISH_LICENSE_URL = 'https://github.com/fkocak2505/VIF/tree/main/EdittextFilterLab/LICENSE'
+    PUBLISH_DEVELOPER_ID = 'fkocak2505'
+    PUBLISH_DEVELOPER_NAME = 'Fatih Project'
+    PUBLISH_DEVELOPER_EMAIL = 'fkocak2505@gmail.com'
+    PUBLISH_SCM_CONNECTION = 'scm:git:github.com/fkocak2505/VIF.git'
+    PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com/fkocak2505/VIF.git'
+    PUBLISH_SCM_URL = 'https://github.com/fkocak2505/VIF/tree/master'
+}
+
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
+//afterEvaluate {
+//    publishing{
+//        publications{
+//            release(MavenPublication){
+//                from components.release
+//                groupId = "com.github.fkocak2505"
+//                artifactId = "VIF"
+//                version = "1.0.3"
+//            }
+//        }
+//    }
+//}
