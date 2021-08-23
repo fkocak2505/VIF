@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">VIF</string>
+
+    <!-- VIFEmail -->
+    <string name="ignore_email_invalid_symbol">Email alanında ingilizce karakter ve "@, ., _ , -" özel karakterleri haricinde bir karakter kullanamazsınız.</string>
+    <string name="ignore_last_spesific_char">"Son karaketer '%1$s' olamaz"</string>
+    <string name="invalid_email">"Geçerli bir mail adresi giriniz"</string>
+    <string name="cannotMoreThanCharecter">"@ , - , _ , . hariç '%1$s' karakterden fazla olması lazım"</string>
+    <string name="ignore_multiple_symbol">"Birden fazla '%1$s' sembolü girilemez"</string>
+    <string name="ignore_first_symbol">"İlk karakter '%1$s' sembolü olamaz"</string>
+    <string name="ignore_consecutive_chars">"İki tane '%1$s' sembolü yanyana gelemez"</string>
+    <string name="ignore__twoConsecutive_chars">"'%1$s' sembolleri yanyana gelemez"</string>
+
+    <!-- VIFName -->
+    <string name="invalid_name">"No characters other than English characters and Turkish characters can be used in the name or surname field"</string>
+    <string name="ignore_first_spesific_char">İlk karakter %1$s ya da %1$s karakteri olamaz</string>
+    <string name="ignore_consecutive_chart_limit">%1$s adetten fazla aynı karakter kullanılamaz</string>
+    <string name="ignore_vowel_char_limit">%1$s adetten fazla ünlü harf yanyana kullanılamaz</string>
+    <string name="ignore__consonant_char_limit">%1$s adetten fazla ünsüz harf yanyana kullanılamaz</string>
+
+    <!-- VIFPhone -->
+    <string name="ignore_first_char_for_phone_number">Telefon numarası %1$ ile başlamalıdır</string>
+
+
+</resources>

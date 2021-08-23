@@ -48,7 +48,10 @@ class VIFPhone(var et: EditText, override var context: Context) : InputFilter, B
                     if (it) {
 
                         showMessage(
-                            "Telefon numarası $ignoreFirstCharForPhoneNumber ile başlamalıdır",
+                            context.getString(
+                                R.string.ignore_first_char_for_phone_number,
+                                ignoreFirstCharForPhoneNumber
+                            ),
                             Toast.LENGTH_SHORT
                         )
 
@@ -74,7 +77,7 @@ class VIFPhone(var et: EditText, override var context: Context) : InputFilter, B
     ): Boolean? {
         return if (str.isNotEmpty()) {
             if (str.length != 1) {
-                when(str.length){
+                when (str.length) {
                     10 -> {
                         str[0].toString() != ignoreFirstCharForPhoneNumber
                     }
@@ -84,7 +87,7 @@ class VIFPhone(var et: EditText, override var context: Context) : InputFilter, B
                     12 -> {
                         str[2].toString() != ignoreFirstCharForPhoneNumber
                     }
-                    13->{
+                    13 -> {
                         str[areaCode.length].toString() != ignoreFirstCharForPhoneNumber
                     }
                     else -> null

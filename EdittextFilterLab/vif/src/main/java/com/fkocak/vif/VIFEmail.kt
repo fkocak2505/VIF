@@ -48,7 +48,7 @@ class VIFEmail(var et: EditText, override var context: Context) : InputFilter, B
             when (matcher.matches()) {
                 false -> {
                     showMessage(
-                        "Email alanında ingilizce karakter ve \"@, ., _ , -\" özel karakterleri haricinde bir karakter kullanamazsınız.",
+                        context.getString(R.string.ignore_email_invalid_symbol),
                         Toast.LENGTH_SHORT
                     )
                     return source?.dropLast(1)
@@ -84,7 +84,10 @@ class VIFEmail(var et: EditText, override var context: Context) : InputFilter, B
                 ignoreLastSpesificChar(finalTexEmail, ignoreLastSpesificChar)?.let {
                     if (it) {
                         showMessage(
-                            "Son karaketer $ignoreLastSpesificChar olamaz",
+                            context.getString(
+                                R.string.ignore_last_spesific_char,
+                                ignoreLastSpesificChar
+                            ),
                             Toast.LENGTH_SHORT
                         )
                         return@setOnFocusChangeListener
@@ -93,14 +96,17 @@ class VIFEmail(var et: EditText, override var context: Context) : InputFilter, B
 
                 if (!isValidEmail(finalTexEmail)) {
                     showMessage(
-                        "Geçerli bir mail adresi giriniz",
+                        context.getString(R.string.invalid_email),
                         Toast.LENGTH_SHORT
                     )
 
                     et.text.clear()
                 } else if (calculateStrLength(finalTexEmail) <= cannotMoreThanCharecter) {
                     showMessage(
-                        "@ , - , _ , . hariç $cannotMoreThanCharecter karakterden fazla olması lazım",
+                        context.getString(
+                            R.string.cannotMoreThanCharecter,
+                            cannotMoreThanCharecter.toString()
+                        ),
                         Toast.LENGTH_SHORT
                     )
                     et.text.clear()
@@ -180,7 +186,7 @@ class VIFEmail(var et: EditText, override var context: Context) : InputFilter, B
         if (iMultipleSymbol.isNotEmpty() && source[source.length - 1].toString() == iMultipleSymbol) {
             if (iIgnoreMultipleSpesificSymbol(source[source.length - 1].toString())) {
                 showMessage(
-                    "Birden fazla $iMultipleSymbol sembolü girilemez",
+                    context.getString(R.string.ignore_multiple_symbol, iMultipleSymbol),
                     Toast.LENGTH_SHORT
                 )
                 return true
@@ -199,7 +205,7 @@ class VIFEmail(var et: EditText, override var context: Context) : InputFilter, B
                 if (it.isNotEmpty() && source.length == 1 && dend == 0 && source == it) {
                     if (iIgnoreSpesificChar(dend!!, checkMe, it)) {
                         showMessage(
-                            "İlk karakter $it sembolü olamaz",
+                            context.getString(R.string.ignore_first_symbol, it),
                             Toast.LENGTH_SHORT
                         )
                         return true
@@ -218,7 +224,7 @@ class VIFEmail(var et: EditText, override var context: Context) : InputFilter, B
         if (iConsecutiveChars.isNotEmpty() && source == iConsecutiveChars) {
             if (iCheckConsecutiveRule(dest.toString() + source, 1, ".")) {
                 showMessage(
-                    "İki tane $iConsecutiveChars sembolü yanyana gelemez",
+                    context.getString(R.string.ignore_consecutive_chars, iConsecutiveChars),
                     Toast.LENGTH_SHORT
                 )
                 return true
@@ -236,7 +242,7 @@ class VIFEmail(var et: EditText, override var context: Context) : InputFilter, B
             iTwoConsecutiveChars.forEach {
                 if (iIgnoreDotAndAtCharsConsecutive(dest.toString() + source, it)) {
                     showMessage(
-                        "$it sembolleri yanyana gelemez",
+                        context.getString(R.string.ignore__twoConsecutive_chars, it),
                         Toast.LENGTH_SHORT
                     )
                     return true

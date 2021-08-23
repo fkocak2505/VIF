@@ -1,5 +1,6 @@
 package com.fkocak.vif
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.InputFilter
 import android.text.Spanned
@@ -54,7 +55,7 @@ class VIFName(override var context: Context) : InputFilter, BaseVIF(context) {
             when (matcher.matches()) {
                 false -> {
                     showMessage(
-                        "İsim ya da soyisim alanında ingilizce karakterler ile türkçe karakterler haricinde bir karakter kullanılamaz",
+                        context.getString(R.string.invalid_name),
                         Toast.LENGTH_SHORT
                     )
                     return source?.dropLast(1)
@@ -114,6 +115,7 @@ class VIFName(override var context: Context) : InputFilter, BaseVIF(context) {
 
     //==============================================================================================
     // BRIDGE FUNCTIONS...
+    @SuppressLint("StringFormatMatches")
     private fun bIgnoreFirstSpesificChar(checkMe: String): Boolean {
         if (iFirstSpesificSymbol.isNotEmpty()) {
             iFirstSpesificSymbol.forEach {
@@ -122,7 +124,7 @@ class VIFName(override var context: Context) : InputFilter, BaseVIF(context) {
                     )
                 ) {
                     showMessage(
-                        "İlk karakter ${it.uppercase()} ya da $it karakteri olamaz",
+                        context.getString(R.string.ignore_first_spesific_char, it.uppercase(), it),
                         Toast.LENGTH_SHORT
                     )
                     isBlock = true
@@ -138,7 +140,10 @@ class VIFName(override var context: Context) : InputFilter, BaseVIF(context) {
         if (iConsecutiveChartLimit != -1 && checkLengthIsOne(checkMe) && !isBlock) {
             if (iCheckConsecutiveRule(dest.toString() + source, iConsecutiveChartLimit)) {
                 showMessage(
-                    "$iConsecutiveChartLimit adetten fazla aynı karakter kullanılamaz",
+                    context.getString(
+                        R.string.ignore_consecutive_chart_limit,
+                        iConsonantCharLimit.toString()
+                    ),
                     Toast.LENGTH_SHORT
                 )
                 isBlock = true
@@ -148,7 +153,10 @@ class VIFName(override var context: Context) : InputFilter, BaseVIF(context) {
         } else {
             if (iCheckConsecutiveRule(source, iConsecutiveChartLimit) && !isBlock) {
                 showMessage(
-                    "$iConsecutiveChartLimit adetten fazla aynı karakter kullanılamaz",
+                    context.getString(
+                        R.string.ignore_consecutive_chart_limit,
+                        iConsonantCharLimit.toString()
+                    ),
                     Toast.LENGTH_SHORT
                 )
                 isBlock = true
@@ -164,7 +172,7 @@ class VIFName(override var context: Context) : InputFilter, BaseVIF(context) {
         if (iVowelCharLimit != -1 && checkLengthIsOne(checkMe) && !isBlock) {
             if (checkConsecutiveRule4Vowel(dest.toString() + source) && !isBlock) {
                 showMessage(
-                    "$iVowelCharLimit adetten fazla ünlü harf yanyana kullanılamaz",
+                    context.getString(R.string.ignore_vowel_char_limit, iVowelCharLimit.toString()),
                     Toast.LENGTH_SHORT
                 )
                 isBlock = true
@@ -173,7 +181,7 @@ class VIFName(override var context: Context) : InputFilter, BaseVIF(context) {
         } else {
             if (checkConsecutiveRule4Vowel(source) && !isBlock) {
                 showMessage(
-                    "$iVowelCharLimit adetten fazla ünlü harf yanyana kullanılamaz",
+                    context.getString(R.string.ignore_vowel_char_limit, iVowelCharLimit.toString()),
                     Toast.LENGTH_SHORT
                 )
                 isBlock = true
@@ -188,7 +196,10 @@ class VIFName(override var context: Context) : InputFilter, BaseVIF(context) {
         if (iConsonantCharLimit != -1 && checkLengthIsOne(checkMe) && !isBlock) {
             if (checkConsecutiveRule4Consonant(dest.toString() + source) && !isBlock) {
                 showMessage(
-                    "$iConsonantCharLimit adetten fazla ünsüz harf yanyana kullanılamaz",
+                    context.getString(
+                        R.string.ignore__consonant_char_limit,
+                        iConsonantCharLimit.toString()
+                    ),
                     Toast.LENGTH_SHORT
                 )
                 isBlock = true
@@ -197,7 +208,10 @@ class VIFName(override var context: Context) : InputFilter, BaseVIF(context) {
         } else {
             if (checkConsecutiveRule4Consonant(source) && !isBlock) {
                 showMessage(
-                    "$iConsonantCharLimit adetten fazla ünsüz harf yanyana kullanılamaz",
+                    context.getString(
+                        R.string.ignore__consonant_char_limit,
+                        iConsonantCharLimit.toString()
+                    ),
                     Toast.LENGTH_SHORT
                 )
                 isBlock = true

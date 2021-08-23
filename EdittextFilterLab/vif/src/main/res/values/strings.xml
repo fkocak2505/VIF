@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">VIF</string>
+
+    <string name="ignore_email_invalid_symbol">You cannot use any characters other than English characters and special characters "@,., _, -" in the email field.</string>
+    <string name="ignore_last_spesific_char">"The last character cannot be '%1$s'"</string>
+    <string name="invalid_email">"Enter a valid email address"</string>
+    <string name="cannotMoreThanCharecter">"Must be more than '%1$s' characters except @ , - , _ , ."</string>
+    <string name="ignore_multiple_symbol">"Cannot enter more than one '%1$s' symbol"</string>
+    <string name="ignore_first_symbol">"The first character cannot be the symbol '%1$s'"</string>
+    <string name="ignore_consecutive_chars">"Two '%1$s' symbols cannot come together"</string>
+    <string name="ignore__twoConsecutive_chars">"'%1$s' symbols cannot be placed next to each other"</string>
+
+    <!-- VIFName -->
+    <string name="invalid_name">"İsim ya da soyisim alanında ingilizce karakterler ile türkçe karakterler haricinde bir karakter kullanılamaz"</string>
+    <string name="ignore_first_spesific_char">First character cannot be %1$s or %1$s</string>
+    <string name="ignore_consecutive_chart_limit">Cannot use more than %1$s identical characters</string>
+    <string name="ignore_vowel_char_limit">Cannot use more than %1$s vowels together</string>
+    <string name="ignore__consonant_char_limit">Cannot use more than %1$s consonants together</string>
+
+    <!-- VIFPhone -->
+    <string name="ignore_first_char_for_phone_number">Phone number must start with %1$s</string>
+
 </resources>
