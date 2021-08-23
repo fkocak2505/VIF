@@ -9,7 +9,7 @@ apply plugin: 'kotlin-android'
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.fkocak2505'
-    PUBLISH_VERSION = '1.0.0'
+    PUBLISH_VERSION = '1.0.1'
     PUBLISH_ARTIFACT_ID = 'vif'
     PUBLISH_DESCRIPTION = 'Validation Input Filter'
     PUBLISH_URL = 'https://github.com/fkocak2505/VIF'
